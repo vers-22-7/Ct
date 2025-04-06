@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Frontend</h1>
+    <div id="name"></div>
+    <script>
+        fetch("/api")
+            .then(response => response.json())
+            .then(data => document.getElementById("name").textContent = data.name);
+    </script>
+</body>
+</html>
