@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Auth</title>
+</head>
+<body>
+    <input id="login" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button id="loggin-button">Login</button>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
+        // Ваш конфігураційний код з Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDftr0aaSGBjTc_eCv6RI9dWldSVp75hgc",
+            authDomain: "cloud-5872c.firebaseapp.com",
+            projectId: "cloud-5872c",
+            storageBucket: "cloud-5872c.firebasestorage.app",
+            messagingSenderId: "430707492035",
+            appId: "1:430707492035:web:1a1ec446592b6076954e76"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const login = document.getElementById('login');
+        const password = document.getElementById('password');
+        const button = document.getElementById('loggin-button');
+
+        button.onclick = () => {
+            signInWithEmailAndPassword(auth, login.value, password.value)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    alert(`Успіх! Користувач ${user.email} авторизований.`);
+                })
+                .catch((error) => {
+                    alert(`Помилка: ${error.message}`);
+                });
+        };
+    </script>
+</body>
+</html>
