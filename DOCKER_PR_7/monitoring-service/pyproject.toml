@@ -1,0 +1,15 @@
+[project]
+name = "monitoring-service"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.115.12",
+]
+
+[tool.uv.workspace]
+members = [
+    "gateway-service",
+    "gateway-service/gateway-service",
+]
